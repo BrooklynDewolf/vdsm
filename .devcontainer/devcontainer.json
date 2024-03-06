@@ -1,0 +1,6 @@
+{
+  "name": "vdsm",
+  "build": {
+    "dockerfile": "../docker/Dockerfile.centos-9"
+  }
+}
