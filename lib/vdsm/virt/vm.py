@@ -5934,7 +5934,7 @@ class Vm(object):
     def query_jobs(self):
         return self._drive_merger.query_jobs()
 
-    def on_block_job_event(self, drive, job_type, job_status):
+    def on_block_job_event(self, drive, job_type, job_status, error=None):
         """
         Implement virConnectDomainEventBlockJobCallback.
 
@@ -5970,6 +5970,8 @@ class Vm(object):
             self.log.error(
                 "Block job %s type %s for drive %s: unexpected status %s",
                 job_id, type_name, drive, job_status)
+        if error is not None:
+            self.log.error("Error: %s", error)
 
     def merge(self, driveSpec, baseVolUUID, topVolUUID, bandwidth, jobUUID):
         return self._drive_merger.merge(

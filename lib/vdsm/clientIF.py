@@ -692,7 +692,7 @@ class clientIF(object):
                 v.volume_monitor.on_block_threshold(
                     dev, path, threshold, excess)
             elif eventid == libvirt.VIR_DOMAIN_EVENT_ID_BLOCK_JOB_2:
-                drive, job_type, job_status, _ = args
+                drive, job_type, job_status, error, _ = args
                 v.on_block_job_event(drive, job_type, job_status)
             elif eventid == libvirt.VIR_DOMAIN_EVENT_ID_AGENT_LIFECYCLE:
                 vmid = dom.UUIDString()
